@@ -9,7 +9,7 @@ import { Customer } from "app/models/customer";
 export class CustomerItemComponent implements OnInit {
   @Input() customer: Customer;
   constructor() { }
-
+  //saf
   ngOnInit() {
   }
 
