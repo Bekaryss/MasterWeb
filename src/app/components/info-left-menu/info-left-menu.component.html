@@ -1,0 +1,8 @@
+<div class="col s2">
+    <div class="collection">
+        <a href="#" class="collection-item">info-left-menu works!</a>
+        <div *ngFor="let menu of menuList">
+            <a routerLink="/{{menu.link}}" class="collection-item"><span class="badge">{{menu.order}}</span>{{menu.title}}</a>
+        </div>
+    </div>
+</div>

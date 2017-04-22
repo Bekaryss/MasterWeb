@@ -1,0 +1,6 @@
+<div class="row">
+    <form class="task-form" (ngSubmit)="onSubmit(); taskForm.reset()" #taskForm="ngForm">
+        <input type="text" name="title" [(ngModel)]="title" placeholder="Заголовок задачи" required>
+        <button type="submit" [disabled]="taskForm.form.invalid">Добавить</button>
+    </form>
+</div>

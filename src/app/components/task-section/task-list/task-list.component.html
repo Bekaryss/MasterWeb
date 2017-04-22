@@ -1,0 +1,9 @@
+<md-list>
+    <md-list-item *ngFor="let task of tasks">
+        <app-task-item [task]="task" (delete)="onDelete($event)"></app-task-item>
+        <!--<p md-line>
+            <span> {{message.subject}} </span>
+            <span class="demo-2"> -- {{message.content}} </span>
+        </p>-->
+    </md-list-item>
+</md-list>

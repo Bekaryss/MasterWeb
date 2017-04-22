@@ -1,0 +1,6 @@
+<div class="row">
+    <form class="project-form" (ngSubmit)="onSubmit(); depForm.reset()" #depForm="ngForm">
+        <input type="text" name="title" [(ngModel)]="title" placeholder="Заголовок проекта" required>
+        <button class="btn primary" type="submit" [disabled]="depForm.form.invalid">Добавить</button>
+    </form>
+</div>

@@ -1,0 +1,13 @@
+.department-item {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    .title {
+        cursor: pointer;
+        cursor: hand !important;
+    }
+    .actions {
+        margin-left: 40px;
+        float: right;
+    }
+}

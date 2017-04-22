@@ -1,0 +1,11 @@
+<div class="menu-group-left">
+    <md-list>
+        <md-list-item *ngFor="let item of mItems">
+            <div mdTooltip="{{item.title}}" position="right" mdTooltipPosition="right">
+                <a routerLink="/{{ item.link }}">
+                    <md-icon class="md-list-icon white-text">{{item.icon}}</md-icon>
+                </a>
+            </div>
+        </md-list-item>
+    </md-list>
+</div>
