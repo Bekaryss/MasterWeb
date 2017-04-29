@@ -6,11 +6,12 @@ import { Project } from "app/models/projects";
 @Injectable()
 export class ProjectService {
   private apiUrl = 'api/projects';
+  private apiUrlShift = 'http://fit.kbtu.kz:7777/erp/projects/';
 
   constructor(private http: Http) { }
 
   getProjects(): Observable<Project[]> {
-    return this.http.get(this.apiUrl).map(res => res.json().data as Project[]).catch(this.handleError);
+    return this.http.get(this.apiUrlShift).map(res => res.json() as Project[]).catch(this.handleError);
   }
 
   getProjectsById(id: number): Observable<Project[]> {
@@ -18,22 +19,29 @@ export class ProjectService {
       .map(project => project.filter(proj => proj.departmentId == id));
   }
 
-  createTask(project: Project){
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers });
-    return this.http.post(this.apiUrl, project, options).map(res => res.json().data as Project).catch(this.handleError);
+  createProject(project: Project){
+    return this.http.post(this.apiUrlShift + 'add/', JSON.stringify(project), this.jwt()).map(res => res.json().data as Project).catch(this.handleError);
   }
 
-   deleteTask(project: Project){
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers });
-    let url = `${this.apiUrl}/${project.id}`;
-    return this.http.delete(url, headers).catch(this.handleError);
+   deleteProject(project: Project){
+    let url = `${this.apiUrlShift}delete/${project.id.toString()}/`;
+    return this.http.post(url, null, this.jwt()).catch(this.handleError);
   }
 
    private handleError(error: any) {
     console.error('Some error!!!', error);
     return Observable.throw(error.message || error);
   }
+
+  private jwt() {
+        // create authorization header with jwt token
+        let currentUser = JSON.parse(localStorage.getItem('user'));
+        if (currentUser && currentUser.token) {
+            console.log(currentUser.token);
+            let headers = new Headers({ 'Content-Type': 'application/json',
+                                        'Authorization': 'JWT ' + currentUser.token });
+            return new RequestOptions({ headers: headers });
+        }
+    }
 }
 

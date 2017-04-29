@@ -6,15 +6,17 @@ import { User, UserCreate } from '../models/user';
 
 @Injectable()
 export class AuthorizationService {
+
   public token: string;
 
   constructor(private http: Http) { }
   
   login(username: string, password: string): Observable<boolean> {
+
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    let url = 'http://fit.kbtu.kz:8080/auth/login/';
+    let url = 'http://fit.kbtu.kz:7777/auth/login/';
     let body = JSON.stringify({ username: username, password: password });
 
     return this.http.post(url, body, options)
@@ -29,6 +31,7 @@ export class AuthorizationService {
           this.getInfo().subscribe(
             data => {
               let userInfo = data as User;
+              console.log(userInfo);
               localStorage.removeItem('user');
               localStorage.setItem('user', JSON.stringify({ token: token, username: username, user: userInfo }));
             }
@@ -46,7 +49,7 @@ export class AuthorizationService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    let url = 'http://fit.kbtu.kz:8080/auth/register/';
+    let url = 'http://fit.kbtu.kz:7777/auth/register/';
     let body = JSON.stringify(user);
 
     console.log(body);
@@ -63,10 +66,7 @@ export class AuthorizationService {
   }
 
   getInfo(): Observable<any> {
-    let url = 'http://fit.kbtu.kz:8080/auth/info/';
-
-    console.log(this.jwt());
-
+    let url = 'http://fit.kbtu.kz:7777/auth/info/';
     return this.http.get(url, this.jwt()).map((res: Response) => res.json());
   }
 

@@ -29,6 +29,7 @@ export class TaskFormComponent implements OnInit {
   onSubmit(){
     this.task.title = this.title;
     this.task.description = this.description;
+    this.task.departmentId = this.selectedValue;
     this.task.projectId = this.selectedProj;
     this.create.emit(this.task);
     this.task = new Task();

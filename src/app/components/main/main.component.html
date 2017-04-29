@@ -5,9 +5,30 @@
                 <md-icon md-list-icon>notifications</md-icon>
             </li>
             <li class="top-item">
-                <md-icon md-list-icon>account_circle</md-icon>
+                <button md-icon-button [mdMenuTriggerFor]="menu">
+                    <md-icon md-list-icon>account_circle</md-icon>
+                </button>
             </li>
         </ul>
+        <md-menu #menu="mdMenu">
+            <div md-menu-item *ngIf="loggedIn()">
+                <button md-button>
+                    I am, {{ username }}
+                </button>
+            </div>
+            <button md-menu-item *ngIf="!loggedIn()" (click)="openSignupDialog()">
+                <md-icon>dialpad</md-icon>
+                <span>Register</span>
+            </button>
+            <button md-menu-item *ngIf="!username" (click)="openLoginDialog()">
+                <md-icon>voicemail</md-icon>
+                <span>Log in</span>
+            </button>
+            <button md-menu-item *ngIf="username" (click)="logout()">
+                <md-icon>notifications_off</md-icon>
+                <span>Log out</span>
+            </button>
+        </md-menu>
     </nav>
 </div>
 <div class="main-class row">

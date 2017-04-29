@@ -7,26 +7,22 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 @Injectable()
 export class DepartmentService {
   private apiUrl = 'api/departments';
-
-  private apiUrlShift = 'http://fit.kbtu.kz:7777/erp/departments/'
+  private apiUrlShift = 'http://fit.kbtu.kz:7777/erp/departments/';
 
   constructor(private http: Http) { }
 
   getDepartments(): Observable<Department[]> {   
-    return this.http.get(this.apiUrlShift).map(res => res.json().data as Department[]).catch(this.handleError);
+    return this.http.get(this.apiUrlShift).map(res => res.json() as Department[]).catch(this.handleError);
   }
 
   createDepartment(department: Department){
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers });
-    return this.http.post(this.apiUrl, department, options).map(res => res.json().data as Department).catch(this.handleError);   
+    department.image = null;
+    return this.http.post(this.apiUrlShift + 'add/', JSON.stringify(department), this.jwt()).map(res => res.json() as Department).catch(this.handleError);   
 }
 
   deleteDepartment(department: Department){
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers });
-    let url = `${this.apiUrl}/${department.id}`;
-    return this.http.delete(url, headers).catch(this.handleError);
+    let url = this.apiUrlShift +'delete/' + department.id.toString() + '/';
+    return this.http.post(url, null, this.jwt()).catch(this.handleError);
   }
 
 
@@ -34,4 +30,15 @@ export class DepartmentService {
     console.error('Some error!!!', error);
     return Observable.throw(error.message || error);
   }
+
+  private jwt() {
+        // create authorization header with jwt token
+        let currentUser = JSON.parse(localStorage.getItem('user'));
+        if (currentUser && currentUser.token) {
+            console.log(currentUser.token);
+            let headers = new Headers({ 'Content-Type': 'application/json',
+                                        'Authorization': 'JWT ' + currentUser.token });
+            return new RequestOptions({ headers: headers });
+        }
+    }
 }

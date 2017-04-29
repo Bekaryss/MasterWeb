@@ -6,6 +6,6 @@ export class Task {
     description: string;
     departmentId: number;
     projectId: number;
-    user: User;
+    user: number;
 }
 

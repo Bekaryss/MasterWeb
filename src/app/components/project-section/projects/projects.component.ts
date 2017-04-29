@@ -20,11 +20,11 @@ export class ProjectsComponent implements OnInit {
   }
 
   create(project: Project) {
-    this.projService.createTask(project).subscribe(res => this.projects.push(project));
+    this.projService.createProject(project).subscribe(res => this.projects.push(project));
   }
 
   delete(project: Project) {
-    this.projService.deleteTask(project).subscribe(res => {
+    this.projService.deleteProject(project).subscribe(res => {
       let index = this.projects.indexOf(project);
 
       if (index > -1) {
