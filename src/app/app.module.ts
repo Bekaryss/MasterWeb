@@ -141,7 +141,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-    // InMemoryWebApiModule.forRoot(InMemoryDataService),
+   InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
 
   providers: [DepartmentService, TaskService, CustomerService, ProjectService],

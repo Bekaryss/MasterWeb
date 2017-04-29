@@ -13,7 +13,7 @@ export class DepartmentService {
   constructor(private http: Http) { }
 
   getDepartments(): Observable<Department[]> {   
-    return this.http.get(this.apiUrlShift).map((res: Response) => res.json().data as Department[]).catch(this.handleError);
+    return this.http.get(this.apiUrlShift).map(res => res.json().data as Department[]).catch(this.handleError);
   }
 
   createDepartment(department: Department){
