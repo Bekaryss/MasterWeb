@@ -1,13 +1,15 @@
-<div class="card">
-    <div class="card-content">
-        <span class="card-title">{{ department.title }}</span>
-        <div class="actions">
-            <button class="btn primary delete icon" (click)="onSelect()"> 
-              <i class="material-icons">more</i>
-            </button>
-            <button class="btn primary delete icon" (click)="onDelete()"> 
-              <i class="material-icons">delete</i>
-            </button>
+<div class="card horizontal  white-text">
+    <!--<div class="card-image">
+    <img src="http://lorempixel.com/100/190/nature/6">
+    </div>-->
+    <div class="card-stacked">
+        <div class="card-content blue-grey darken-1">
+            <span class="card-title">{{ department.title }}</span>
+            <p>{{ department.description }}</p>
+        </div>
+        <div class="card-action">
+            <a href="javascript:void(0)" (click)="onSelect()"><i class="material-icons text-color-sakura">more</i></a>
+            <a href="javascript:void(0)" (click)="onDelete()"> <i class="material-icons text-color-sakura">delete</i></a>
         </div>
     </div>
 </div>

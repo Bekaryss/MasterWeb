@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col s12">
+        <md-card class="example-card" [@openClose]="'true'">
+            <md-card-header>
+                Departments
+            </md-card-header>
+            <md-card-content>
+                <md-list>
+                    <md-list-item *ngFor="let department of departments">
+                        <md-icon md-list-icon>folder</md-icon>
+                        <a md-line [routerLink]="['/projects', department.id]"> {{ department.title }}</a>
+                        <p md-line>
+                            <span> {{department.description}} </span>
+                        </p>
+                    </md-list-item>
+                </md-list>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>

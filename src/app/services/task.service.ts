@@ -12,6 +12,11 @@ export class TaskService {
     return this.http.get(this.apiUrl).map(res => res.json().data as Task[]).catch(this.handleError);
   }
 
+  getTasksById(id: number): Observable<Task[]> {
+    return this.getTasks()
+      .map(task => task.filter(tas => tas.projectId == id));
+  }
+
   createTask(task: Task){
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers });

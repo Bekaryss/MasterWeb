@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from "app/models/tasks";
 import { TaskService } from "app/services/task.service";
+import { DepartmentService } from "app/services/department.service";
+import { ProjectService } from "app/services/project.service";
+import { Project } from "app/models/projects";
+import { Department } from "app/models/departments";
 
 @Component({
   selector: 'app-tasks',
@@ -9,11 +13,19 @@ import { TaskService } from "app/services/task.service";
 })
 export class TasksComponent implements OnInit {
   tasks: Task[];
+  departments: Department[];
+  projects: Project[];
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private depService: DepartmentService, private projService: ProjectService) { }
 
   ngOnInit() {
     this.taskService.getTasks().subscribe(tas => this.tasks = tas);
+    this.depService.getDepartments().subscribe(dep => this.departments = dep);
+    this.select(1);
+}
+
+  select(id: number){
+    this.projService.getProjectsById(id).subscribe(proj => this.projects = proj);
   }
 
   create(task: Task) {

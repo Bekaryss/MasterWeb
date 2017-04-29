@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MdMenuTrigger } from "@angular/material";
 
 @Component({
   selector: 'app-main',
@@ -7,12 +6,6 @@ import { MdMenuTrigger } from "@angular/material";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
-  @ViewChild(MdMenuTrigger) trigger: MdMenuTrigger;
-
-  someMethod() {
-    this.trigger.openMenu();
-  }
 
   constructor() { }
 

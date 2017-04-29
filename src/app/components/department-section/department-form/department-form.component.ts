@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { department } from "app/models/departments";
+import { Department } from "app/models/departments";
 import * as _ from 'lodash';
 
 @Component({
@@ -9,13 +9,16 @@ import * as _ from 'lodash';
 })
 export class DepartmentFormComponent implements OnInit {
   title: string = '';
-  department: department = new department();
+  description: string = '';
+  department: Department = new Department();
 
-  @Output() create: EventEmitter<department> = new EventEmitter();
+  @Output() create: EventEmitter<Department> = new EventEmitter();
   constructor() { }
   onSubmit(){
     this.department.title = this.title;
-    this.create.emit(_(this.department).cloneDeep());
+    this.department.description = this.description;
+    this.create.emit(this.department);
+    this.department = new Department();
   }
 
   ngOnInit() {

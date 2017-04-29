@@ -1,0 +1,24 @@
+.info-menu {
+    display: flex;
+    a.info-menu-item {
+        flex-direction: row;
+        margin-left: 40px;
+        padding: 0;
+        .chip {
+            width: 120px;
+            text-align: center;
+            background-color: #3E4957;
+            color: #FFFFFF;
+        }
+        .chip:hover {
+            background-color: #8D3A61;
+        }
+    }
+    .chipActive {
+        margin-left: 85px;
+        width: 120px;
+        text-align: center;
+        font-size: 22px;
+        color: #3E4957;
+    }
+}

@@ -1,26 +1,28 @@
 import { Injectable } from '@angular/core';
-import { department } from "app/models/departments";
+import { Department } from "app/models/departments";
 import { Observable } from "rxjs/Observable";
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 
 @Injectable()
 export class DepartmentService {
   private apiUrl = 'api/departments';
 
+  private apiUrlShift = 'http://fit.kbtu.kz:7777/erp/departments/'
+
   constructor(private http: Http) { }
 
-  getDepartments(): Observable<department[]> {
-    return this.http.get(this.apiUrl).map(res => res.json().data as department[]).catch(this.handleError);
+  getDepartments(): Observable<Department[]> {   
+    return this.http.get(this.apiUrlShift).map((res: Response) => res.json().data as Department[]).catch(this.handleError);
   }
 
-  createDepartment(department: department){
+  createDepartment(department: Department){
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers });
-    return this.http.post(this.apiUrl, department, options).map(res => res.json().data as department).catch(this.handleError);
-  }
+    return this.http.post(this.apiUrl, department, options).map(res => res.json().data as Department).catch(this.handleError);   
+}
 
-  deleteDepartment(department: department){
+  deleteDepartment(department: Department){
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers });
     let url = `${this.apiUrl}/${department.id}`;

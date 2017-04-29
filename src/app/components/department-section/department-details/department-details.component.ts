@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { department } from "app/models/departments";
+import { Department } from "app/models/departments";
 
 @Component({
   selector: 'app-department-details',
@@ -7,7 +7,7 @@ import { department } from "app/models/departments";
   styleUrls: ['./department-details.component.scss']
 })
 export class DepartmentDetailsComponent implements OnInit {
-  @Input() department: department;
+  @Input() department: Department;
   
   constructor() { }
 

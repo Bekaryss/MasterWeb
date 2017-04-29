@@ -1,0 +1,21 @@
+<div class="card horizontal white-text">
+    <div class="card-stacked">
+        <div class="card-content blue-grey darken-1">
+            <span class="card-title">Добавить новый проект</span>
+            <form class="task-form" (ngSubmit)="onSubmit(); taskForm.reset()" #taskForm="ngForm">
+
+                <div class="row">
+                    <input type="text" name="title " [(ngModel)]="title" placeholder="Заголовок проекта" required>
+                    <input type="text" name="description " [(ngModel)]="description" placeholder="Описание проекта" required>
+                </div>
+                <div class="row">
+                    <label class="white-text" style="margin-right: 10px;">Выберите департамент</label>
+                    <md-select placeholder="State" [(ngModel)]="selectedValue" name="state" required>
+                        <md-option *ngFor="let state of departments" [value]="state.id ">{{ state.title }}</md-option>
+                    </md-select>
+                </div>
+                <button class="btn pink darken-3 " type="submit " [disabled]="taskForm.form.invalid ">Добавить</button>
+            </form>
+        </div>
+    </div>
+</div>

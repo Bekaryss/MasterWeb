@@ -5,7 +5,7 @@
         margin: 0;
         display: inline-block;
         width: 100%;
-        background-color: blue;
+        background-color: #3E4957;
         ul {
             float: right;
             display: flex;
@@ -24,8 +24,10 @@
 
 .menu-group {
     position: absolute;
+    height: 100%;
 }
 
 .main-area {
     margin-left: 60px;
+    margin-top: 20px;
 }

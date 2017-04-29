@@ -9,24 +9,23 @@ export class LMItem{
 export const LMItems: LMItem[]=[
     {
          id: 1, 
+         title: 'Dashboard', 
+         order: 1, 
+         link: '', 
+         children: null
+    },
+    {
+         id: 1, 
          title: 'Department', 
          order: 1, 
          link: 'department', 
-         children:[
-             {
-                 id: 2,
-                 title: 'Finance',
-                 order: 1,
-                 link: 'finance',
-                 children: null
-             }
-         ],
+         children: null
     },
     {
         id: 3, 
-        title: 'Table', 
+        title: 'Projects', 
         order: 3, 
-        link: '', 
+        link: 'projects', 
         children: null
     },
     {

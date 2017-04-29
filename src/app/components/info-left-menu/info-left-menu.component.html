@@ -1,8 +1,16 @@
-<div class="col s2">
-    <div class="collection">
-        <a href="#" class="collection-item">info-left-menu works!</a>
+<div class="row">
+    <div class="info-menu">
         <div *ngFor="let menu of menuList">
-            <a routerLink="/{{menu.link}}" class="collection-item"><span class="badge">{{menu.order}}</span>{{menu.title}}</a>
+            <a routerLink="/{{menu.link}}" class="info-menu-item">
+                <div class="chip" (click)="onSelect(menu)">
+                    {{menu.title}}
+                </div>
+            </a>
+        </div>
+        <div>
+            <div class="chipActive">
+                <b>{{title}}</b>
+            </div>
         </div>
     </div>
 </div>

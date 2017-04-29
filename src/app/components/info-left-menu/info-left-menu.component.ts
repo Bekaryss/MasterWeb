@@ -8,9 +8,15 @@ import { LMItem, LMItems } from "app/models/left-menu-items";
 })
 export class InfoLeftMenuComponent implements OnInit {
   menuList: LMItem[] = LMItems;
+  title: string = "Dashboard";
+  menu: LMItem;
+
   constructor() { }
 
   ngOnInit() {
+  }
+  onSelect(menu: LMItem){
+    this.title = menu.title;
   }
 
 }

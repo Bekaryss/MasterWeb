@@ -1,10 +1,12 @@
-<div class="row">
-    <div class="task-item col s12">
-        <span (click)="onSelect()" class="title ">{{ task.title }}</span>
-        <div class="actions">
-            <button class="btn primary delete icon" (click)="onDelete()"> 
-              <i class="material-icons">delete</i>
-            </button>
+<div class="card horizontal  white-text">
+    <div class="card-stacked">
+        <div class="card-content blue-grey darken-1">
+            <span (click)="onSelect()" class="card-title">{{ task.title }}</span>
+            <p>{{ task.description }}</p>
+            <p>{{ task.projectId }}</p>
+        </div>
+        <div class="card-action">
+            <a href="javascript:void(0)" (click)="onDelete()"> <i class="material-icons text-color-sakura">delete</i></a>
         </div>
     </div>
 </div>

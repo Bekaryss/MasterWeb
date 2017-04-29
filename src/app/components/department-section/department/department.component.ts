@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { department } from "app/models/departments";
+import { Department } from "app/models/departments";
 import { DepartmentService } from '../../../services/department.service';
 import { Observable } from "rxjs/Observable";
-import * as _ from 'lodash';
 
 @Component({
   selector: 'app-department',
@@ -10,23 +9,22 @@ import * as _ from 'lodash';
   styleUrls: ['./department.component.scss']
 })
 export class DepartmentComponent implements OnInit {
-  departments: department[];
-  selectedDepartment: department;
+  departments: Department[];
+  selectedDepartment: Department;
 
   constructor(private depService: DepartmentService) { }
 
   ngOnInit() {
-    this.depService.getDepartments().subscribe(deps => this.departments = deps);
+    this.depService.getDepartments().subscribe(des => this.departments = des);
+    console.log(this.departments);
+  } 
+
+  create(department: Department) {
+    department.id = this.departments.length + 1;
+    this.depService.createDepartment(department).subscribe(res => this.departments.push(department));
   }
 
-  create(department: department) {
-    this.depService.createDepartment(department).subscribe(res => {
-      const newD = _(department).cloneDeep();
-      this.departments.push(newD)
-    });
-  }
-
-  delete(department: department){
+  delete(department: Department){
     this.depService.deleteDepartment(department).subscribe(res => {
       let index = this.departments.indexOf(department);
 
@@ -36,7 +34,7 @@ export class DepartmentComponent implements OnInit {
     });
   }
 
-  select(department: department) {
+  select(department: Department) {
     this.selectedDepartment = department;
   }
 

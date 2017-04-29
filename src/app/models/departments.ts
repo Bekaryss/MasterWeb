@@ -1,9 +1,10 @@
 import { Project } from "app/models/projects";
 
-export class department {
+export class Department {
     id: number;
     title: string;
-    projects: Project[];
+    description: string;
+    image: string;
 }
 
 

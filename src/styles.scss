@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
+    min-height: 100vh;
     margin: 0;
     padding: 0;
+    background-color: #D9E6F7;
 }
 
 .no-pad {
@@ -11,4 +13,12 @@ body {
 
 .no-mar-bot {
     margin-bottom: 0 !important;
+}
+
+.text-color-sakura {
+    color: #B04979;
+}
+
+.back-color-sakura {
+    color: #B04979;
 }

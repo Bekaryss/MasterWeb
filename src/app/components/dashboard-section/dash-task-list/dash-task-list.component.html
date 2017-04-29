@@ -1,0 +1,22 @@
+<md-card class="example-card" [@openClose]="'true'">
+    <md-card-actions class="right">
+        <a md-line [routerLink]="['/projects', depId]">
+            <md-icon md-list-icon>close</md-icon>
+        </a>
+    </md-card-actions>
+    <md-card-header>
+        Tasks
+    </md-card-header>
+    <md-card-content>
+        <md-list>
+            <md-list-item *ngFor="let task of tasks">
+                <md-icon md-list-icon>folder</md-icon>
+                <div md-line> {{ task.title }}</div>
+                <p md-line>
+                    <span> {{task.description}} </span>
+                </p>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+
+</md-card>

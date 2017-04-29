@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { department } from "app/models/departments";
+import { Department } from "app/models/departments";
 
 @Component({
   moduleId: module.id,
@@ -8,7 +8,7 @@ import { department } from "app/models/departments";
   styleUrls: ['./department-item.component.scss']
 })
 export class DepartmentItemComponent implements OnInit {
-  @Input() department: department;
+  @Input() department: Department;
   @Output() delete = new EventEmitter();
   @Output() select = new EventEmitter();
   constructor() { }

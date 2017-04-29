@@ -1,6 +1,12 @@
-<div class="row">
-    <form class="project-form" (ngSubmit)="onSubmit(); depForm.reset()" #depForm="ngForm">
-        <input type="text" name="title" [(ngModel)]="title" placeholder="Заголовок проекта" required>
-        <button class="btn primary" type="submit" [disabled]="depForm.form.invalid">Добавить</button>
-    </form>
+<div class="card horizontal  white-text">
+    <div class="card-stacked">
+        <div class="card-content blue-grey darken-1">
+            <span class="card-title">Добавить новый департамент</span>
+            <form class="project-form" (ngSubmit)="onSubmit(); depForm.reset()" #depForm="ngForm">
+                <input type="text" name="title" [(ngModel)]="title" placeholder="Заголовок департамента" required>
+                <input type="text" name="description" [(ngModel)]="description" placeholder="Описание департамента" required>
+                <button class="btn pink darken-3" type="submit" [disabled]="depForm.form.invalid">Добавить</button>
+            </form>
+        </div>
+    </div>
 </div>
