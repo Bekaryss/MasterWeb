@@ -115,6 +115,15 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    BrowserAnimationsModule,
+    MaterialModule.forRoot(),
+    RouterModule.forRoot(appRoutes),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
+  ],
   declarations: [
     AppComponent,
     MainComponent,
@@ -146,15 +155,7 @@ const appRoutes: Routes = [
     AuthComponent, 
     AuthRegisterComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    BrowserAnimationsModule,
-    MaterialModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
-    // InMemoryWebApiModule.forRoot(InMemoryDataService),
-  ],
+  
   entryComponents:[AuthComponent, AuthRegisterComponent],
   providers: [DepartmentService, TaskService, CustomerService, ProjectService, AuthorizationService],
   bootstrap: [AppComponent]

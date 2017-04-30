@@ -18,7 +18,6 @@ export class MainComponent implements OnInit {
   checkUser() {
     if (this.authService.isLoggedIn()) {
       var currentUser = JSON.parse(localStorage.getItem('user'));
-      console.log(currentUser);
       this.username = currentUser.username;
     }
   }
@@ -27,6 +26,7 @@ export class MainComponent implements OnInit {
   }
 
   loggedIn() {
+    this.checkUser();
     return this.authService.isLoggedIn();
   }
 

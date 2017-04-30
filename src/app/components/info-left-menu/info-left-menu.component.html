@@ -1,7 +1,7 @@
 <div class="row">
     <div class="info-menu">
         <div *ngFor="let menu of menuList">
-            <a routerLink="/{{menu.link}}" class="info-menu-item">
+            <a routerLink="/{ {menu.link }}" class="info-menu-item">
                 <div class="chip" (click)="onSelect(menu)">
                     {{menu.title}}
                 </div>

@@ -20,8 +20,6 @@ export class TaskService {
   }
 
   createTask(task: Task){
-    let currentUser = JSON.parse(localStorage.getItem('user'));
-    task.user = currentUser.user.id;
     return this.http.post(this.apiUrlShift + 'add/', JSON.stringify(task), this.jwt()).map(res => res.json() as Task).catch(this.handleError);
   }
 
