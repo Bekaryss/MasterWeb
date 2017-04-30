@@ -10,7 +10,7 @@ import { AuthComponent, AuthRegisterComponent } from "app/components/auth/auth.c
 })
 export class MainComponent implements OnInit {
   username: string;
-
+  noautho: string;
   constructor(public dialog: MdDialog, public authService: AuthorizationService) {
     this.checkUser();
    }
