@@ -76,7 +76,6 @@ const appRoutes: Routes = [
             children: [
               {
                 path: '',
-                    canActivate: [ AuthorizationService ],
                 component: DashDepartmentListComponent
               },
               {
