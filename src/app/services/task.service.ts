@@ -22,11 +22,11 @@ export class TaskService {
   createTask(task: Task){
     let currentUser = JSON.parse(localStorage.getItem('user'));
     task.user = currentUser.user.id;
-    return this.http.post(this.apiUrlShift + 'add/', JSON.stringify(task), this.jwt()).map(res => res.json().data as Task).catch(this.handleError);
+    return this.http.post(this.apiUrlShift + 'add/', JSON.stringify(task), this.jwt()).map(res => res.json() as Task).catch(this.handleError);
   }
 
   deleteTask(task: Task){
-    let url = `${this.apiUrlShift}delete//${task.id}/`;
+    let url = `${this.apiUrlShift}delete/${task.id}/`;
     return this.http.post(url, null, this.jwt()).catch(this.handleError);
   }
 

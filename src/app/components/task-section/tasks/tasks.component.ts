@@ -13,6 +13,7 @@ import { Department } from "app/models/departments";
 })
 export class TasksComponent implements OnInit {
   tasks: Task[];
+  task: Task;
   departments: Department[];
   projects: Project[];
 
@@ -29,13 +30,13 @@ export class TasksComponent implements OnInit {
   }
 
   create(task: Task) {
-    this.taskService.createTask(task).subscribe(res => this.tasks.push(task));
+    task.id = this.tasks.length + 1;
+    this.taskService.createTask(task).subscribe(tas => this.tasks.push(task));
   }
 
   delete(task: Task) {
     this.taskService.deleteTask(task).subscribe(res => {
       let index = this.tasks.indexOf(task);
-
       if (index > -1) {
         this.tasks.splice(index, 1);
       }
